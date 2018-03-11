@@ -1,0 +1,27 @@
+AllCops:
+  Exclude:
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+  DisplayStyleGuide: true
+  UseCache: false
+  TargetRubyVersion: 2.1 
+  TargetRailsVersion: 4.2 
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*'
+    - 'config/initializers/*'
+    - 'config/routes.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Metrics/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
