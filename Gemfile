@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'acts_as_tree'
+
 group :development, :test do
   gem 'byebug'
   gem 'factory_bot_rails'
@@ -43,4 +45,8 @@ group :development do
   gem 'rubocop'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end

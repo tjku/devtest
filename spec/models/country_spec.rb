@@ -23,6 +23,7 @@ RSpec.describe Country, type: :model do
   subject { @country }
 
   it { should be_valid }
+  it { should belong_to :panel_provider }
 
   describe 'when panel provider is not present' do
     before { @country.panel_provider = nil }
