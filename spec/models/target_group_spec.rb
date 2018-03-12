@@ -31,6 +31,7 @@ RSpec.describe TargetGroup, type: :model do
 
   it { should be_valid }
   it { should belong_to :panel_provider }
+  it { should have_many :countries }
 
   describe 'when panel provider is not present' do
     before { @target_group.panel_provider = nil }

@@ -16,6 +16,9 @@
 class Country < ActiveRecord::Base
   belongs_to :panel_provider
 
+  has_many :countries_target_groups
+  has_many :target_groups, through: :countries_target_groups
+
   validates :panel_provider, presence: true
   validates :country_code, presence: true
 end
