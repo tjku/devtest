@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311214820) do
+ActiveRecord::Schema.define(version: 20180312092845) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "country_code"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20180311214820) do
 
   add_index "countries_target_groups", ["country_id"], name: "index_countries_target_groups_on_country_id"
   add_index "countries_target_groups", ["target_group_id"], name: "index_countries_target_groups_on_target_group_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "external_id"
+    t.integer  "secret_code"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "panel_providers", force: :cascade do |t|
     t.integer  "code",       null: false
