@@ -20,5 +20,6 @@ RSpec.describe Location, type: :model do
   subject { @location }
 
   it { should be_valid }
+  it { should have_many :location_groups }
   it { should validate_presence_of :name }
 end

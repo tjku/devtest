@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312092845) do
+ActiveRecord::Schema.define(version: 20180312093807) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "country_code"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20180312092845) do
   add_index "countries_target_groups", ["country_id"], name: "index_countries_target_groups_on_country_id"
   add_index "countries_target_groups", ["target_group_id"], name: "index_countries_target_groups_on_target_group_id"
 
+  create_table "location_groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.integer  "panel_provider_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "location_groups", ["country_id"], name: "index_location_groups_on_country_id"
+  add_index "location_groups", ["panel_provider_id"], name: "index_location_groups_on_panel_provider_id"
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.integer  "external_id"
@@ -39,6 +50,16 @@ ActiveRecord::Schema.define(version: 20180312092845) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "locations_location_groups", force: :cascade do |t|
+    t.integer  "location_id"
+    t.integer  "location_group_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "locations_location_groups", ["location_group_id"], name: "index_locations_location_groups_on_location_group_id"
+  add_index "locations_location_groups", ["location_id"], name: "index_locations_location_groups_on_location_id"
 
   create_table "panel_providers", force: :cascade do |t|
     t.integer  "code",       null: false

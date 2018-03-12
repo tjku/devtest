@@ -24,6 +24,7 @@ RSpec.describe PanelProvider, type: :model do
   it { should be_valid }
   it { should have_many :countries }
   it { should have_many :target_groups }
+  it { should have_many :location_groups }
 
   describe 'when code is not present' do
     before { @panel_provider.code = nil }
