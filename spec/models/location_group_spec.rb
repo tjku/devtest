@@ -29,6 +29,14 @@ RSpec.describe LocationGroup, type: :model do
   it { should belong_to :panel_provider }
   it { should have_many :locations }
   it { should validate_presence_of :country }
-  it { should validate_presence_of :panel_provider }
   it { should validate_presence_of :name }
+
+  describe 'set panel provider when country is set' do
+    before do
+      subject.panel_provider = nil
+      subject.save!
+    end
+
+    it { expect(subject.panel_provider).to eq subject.country.panel_provider }
+  end
 end

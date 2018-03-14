@@ -23,6 +23,13 @@ class LocationGroup < ActiveRecord::Base
   has_many :locations, through: :locations_location_groups
 
   validates :country, presence: true
-  validates :panel_provider, presence: true
   validates :name, presence: true
+
+  before_validation :set_panel_provider
+
+  private
+
+  def set_panel_provider
+    self.panel_provider ||= country.panel_provider if country.present?
+  end
 end

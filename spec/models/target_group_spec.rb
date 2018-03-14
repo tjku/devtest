@@ -39,6 +39,17 @@ RSpec.describe TargetGroup, type: :model do
     it { should_not be_valid }
   end
 
+  describe 'set panel provider when parent is set' do
+    before do
+      parent = FactoryBot.create :target_group
+      parent.children << subject
+      subject.panel_provider = nil
+      subject.save!
+    end
+
+    it { expect(subject.panel_provider).to eq subject.parent.panel_provider }
+  end
+
   describe 'when name is not present' do
     before { @target_group.name = '' }
 

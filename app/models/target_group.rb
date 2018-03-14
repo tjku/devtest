@@ -26,4 +26,12 @@ class TargetGroup < ActiveRecord::Base
 
   validates :panel_provider, presence: true
   validates :name, presence: true
+
+  before_validation :set_panel_provider
+
+  private
+
+  def set_panel_provider
+    self.panel_provider ||= parent.panel_provider if parent.present?
+  end
 end
