@@ -27,7 +27,7 @@ RSpec.describe LocationGroup, type: :model do
   it { should be_valid }
   it { should belong_to :country }
   it { should belong_to :panel_provider }
-  it { should have_many :locations }
+  it { should have_many(:locations).dependent(:destroy) }
   it { should validate_presence_of :country }
   it { should validate_presence_of :name }
 

@@ -13,9 +13,9 @@
 #
 
 class PanelProvider < ActiveRecord::Base
-  has_many :countries
-  has_many :target_groups
-  has_many :location_groups
+  has_many :countries, dependent: :destroy
+  has_many :target_groups, dependent: :destroy
+  has_many :location_groups, dependent: :destroy
 
   validates :code, presence: true,
                    uniqueness: true

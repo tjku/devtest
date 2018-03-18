@@ -22,7 +22,7 @@ class TargetGroup < ActiveRecord::Base
   belongs_to :panel_provider
 
   has_many :countries_target_groups
-  has_many :countries, through: :countries_target_groups
+  has_many :countries, through: :countries_target_groups, dependent: :destroy
 
   validates :panel_provider, presence: true
   validates :name, presence: true

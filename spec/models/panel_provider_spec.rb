@@ -22,22 +22,9 @@ RSpec.describe PanelProvider, type: :model do
   subject { @panel_provider }
 
   it { should be_valid }
-  it { should have_many :countries }
-  it { should have_many :target_groups }
-  it { should have_many :location_groups }
-
-  describe 'when code is not present' do
-    before { @panel_provider.code = nil }
-
-    it { should_not be_valid }
-  end
-
-  describe 'when code is already taken' do
-    before do
-      panel_provider = @panel_provider.dup
-      panel_provider.save
-    end
-
-    it { should_not be_valid }
-  end
+  it { should have_many(:countries).dependent(:destroy) }
+  it { should have_many(:target_groups).dependent(:destroy) }
+  it { should have_many(:location_groups).dependent(:destroy) }
+  it { should validate_presence_of :code }
+  it { should validate_uniqueness_of :code }
 end

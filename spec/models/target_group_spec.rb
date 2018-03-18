@@ -31,13 +31,9 @@ RSpec.describe TargetGroup, type: :model do
 
   it { should be_valid }
   it { should belong_to :panel_provider }
-  it { should have_many :countries }
-
-  describe 'when panel provider is not present' do
-    before { @target_group.panel_provider = nil }
-
-    it { should_not be_valid }
-  end
+  it { should have_many(:countries).dependent(:destroy) }
+  it { should validate_presence_of :panel_provider }
+  it { should validate_presence_of :name }
 
   describe 'set panel provider when parent is set' do
     before do
@@ -48,12 +44,6 @@ RSpec.describe TargetGroup, type: :model do
     end
 
     it { expect(subject.panel_provider).to eq subject.parent.panel_provider }
-  end
-
-  describe 'when name is not present' do
-    before { @target_group.name = '' }
-
-    it { should_not be_valid }
   end
 
   describe 'acts as a tree' do

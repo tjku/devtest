@@ -24,18 +24,8 @@ RSpec.describe Country, type: :model do
 
   it { should be_valid }
   it { should belong_to :panel_provider }
-  it { should have_many :target_groups }
-  it { should have_many :location_groups }
-
-  describe 'when panel provider is not present' do
-    before { @country.panel_provider = nil }
-
-    it { should_not be_valid }
-  end
-
-  describe 'when country code is not present' do
-    before { @country.country_code = nil }
-
-    it { should_not be_valid }
-  end
+  it { should have_many(:target_groups).dependent(:destroy) }
+  it { should have_many(:location_groups).dependent(:destroy) }
+  it { should validate_presence_of :panel_provider }
+  it { should validate_presence_of :country_code }
 end
