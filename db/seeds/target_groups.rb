@@ -30,5 +30,3 @@ root = random_panel_provider.target_groups.create!(
 make_children(root)
 
 puts "Done! #{TargetGroup.count} records were created."
-
-# TODO: connect target_groups with countries

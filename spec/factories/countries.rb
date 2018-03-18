@@ -20,6 +20,7 @@ FactoryBot.define do
 
     after :create do |country|
       create_list :location_group, 2, country: country, panel_provider: country.panel_provider
+      country.target_groups << create_list(:target_group, 5, panel_provider: country.panel_provider)
     end
   end
 end
