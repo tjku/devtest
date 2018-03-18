@@ -20,5 +20,9 @@ FactoryBot.define do
     name { Faker::Lorem.word }
     country
     panel_provider
+
+    after :create do |location_group|
+      create_list :location, 3, location_groups: [location_group]
+    end
   end
 end

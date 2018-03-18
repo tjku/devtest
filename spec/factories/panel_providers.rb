@@ -14,6 +14,10 @@
 
 FactoryBot.define do
   factory :panel_provider do
-    code { Faker::Number.number(4) }
+    sequence(:code)
+
+    after :create do |panel_provider|
+      create_list :country, 3, panel_provider: panel_provider
+    end
   end
 end

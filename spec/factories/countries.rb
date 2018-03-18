@@ -17,5 +17,9 @@ FactoryBot.define do
   factory :country do
     country_code { Faker::Address.country_code }
     panel_provider
+
+    after :create do |country|
+      create_list :location_group, 2, country: country, panel_provider: country.panel_provider
+    end
   end
 end
