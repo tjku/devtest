@@ -35,6 +35,8 @@ The authentication type is up to you and you should assume there is no firewall 
 
 ## Models
 
+### Schema
+
 #### PanelProvider
 
 * id
@@ -75,6 +77,8 @@ TargetGroup model would have associations with it self via parent_id which would
 * secret_code
 * panel_provider_id
 
+### Seeds
+
 The application should have:
 * 3 panel providers.
 * 3 countries, each with different panel provider.
@@ -82,7 +86,7 @@ The application should have:
 * 4 location groups, 3 of them with different provider and 1 would belong to any of them.
 * 4 root target groups and each root should start a tree which is minimium 3 levels deep (3 of them with different provider and 1 would belong to any of them).
 
-## Panel providers pricing logic
+### Panel providers pricing logic
 
 Each panel provider will have a different pricing logic.
  
