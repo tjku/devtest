@@ -23,5 +23,6 @@ class Country < ActiveRecord::Base
   has_many :target_groups, through: :countries_target_groups, dependent: :destroy
 
   validates :panel_provider, presence: true
-  validates :country_code, presence: true
+  validates :country_code, presence: true,
+                           uniqueness: { scope: :panel_provider_id, case_sensitive: false }
 end

@@ -15,7 +15,7 @@
 
 FactoryBot.define do
   factory :country do
-    country_code { Faker::Address.country_code }
+    sequence(:country_code) { |n| "#{Faker::Address.country_code}-#{n}" }
     panel_provider
 
     after :create do |country|

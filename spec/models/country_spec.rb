@@ -28,4 +28,5 @@ RSpec.describe Country, type: :model do
   it { should have_many(:location_groups).dependent(:destroy) }
   it { should validate_presence_of :panel_provider }
   it { should validate_presence_of :country_code }
+  it { should validate_uniqueness_of(:country_code).scoped_to(:panel_provider_id).case_insensitive }
 end
