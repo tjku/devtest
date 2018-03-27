@@ -1,5 +1,5 @@
 module Api
-  class TargetGroupsController < ApplicationController
+  class TargetGroupsController < ApiController
     before_action :set_country
 
     def index

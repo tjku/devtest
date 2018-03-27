@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'acts_as_tree'
+gem 'devise_token_auth'
 
 group :development, :test do
   gem 'byebug'

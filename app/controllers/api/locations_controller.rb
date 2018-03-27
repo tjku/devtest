@@ -1,5 +1,5 @@
 module Api
-  class LocationsController < ApplicationController
+  class LocationsController < ApiController
     before_action :set_country
 
     def index
