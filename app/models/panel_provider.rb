@@ -19,4 +19,9 @@ class PanelProvider < ActiveRecord::Base
 
   validates :code, presence: true,
                    uniqueness: true
+
+  def price
+    generator = "PriceLogic#{id % 3 + 1}".constantize.new
+    generator.call
+  end
 end

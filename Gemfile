@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'acts_as_tree'
 gem 'devise_token_auth'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug'
@@ -41,6 +42,8 @@ group :development, :test do
   gem 'faker'
   gem 'fuubar'
   gem 'rspec-rails'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
