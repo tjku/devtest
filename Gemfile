@@ -42,8 +42,8 @@ group :development, :test do
   gem 'faker'
   gem 'fuubar'
   gem 'rspec-rails'
-  gem 'webmock'
   gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

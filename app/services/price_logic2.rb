@@ -25,7 +25,7 @@ class PriceLogic2
   end
 
   def large_array?(array, min_size)
-    return unless array.kind_of? Array
+    return unless array.is_a? Array
 
     array.count > min_size
   end

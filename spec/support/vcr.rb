@@ -22,9 +22,11 @@ RSpec.configure do |config|
         parent = parent.parent
       end
 
-      name = path_data.map{|str| str.underscore.gsub(/\./,'').gsub(/[^\w\/]+/, '_').gsub(/\/$/, '')}.reverse.join('/')
+      name = path_data.map do |str|
+        str.underscore.delete('.').gsub(%r{[^\w/]+}, '_').gsub(%r{/$}, '')
+      end.reverse.join('/')
 
       VCR.use_cassette(name, options, &example)
     end
   end
-end 
+end
